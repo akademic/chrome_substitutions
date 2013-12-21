@@ -15,7 +15,9 @@ var dictionary = [
 {f: 'Единая Россия', t: 'Партия Жуликов и Воров'},
 ]
 
-localStorage['dictionary'] = JSON.stringify(dictionary);
+if( localStorage['dictionary'] == undefined ) {
+    localStorage['dictionary'] = JSON.stringify(dictionary);
+}
 
 chrome.runtime.onMessage.addListener(function(mess, sender, send_resp) {
     if(mess.action == 'get_dict') {
