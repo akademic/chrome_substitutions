@@ -5,7 +5,6 @@ var getTextNodesIn = function(el) {
 };
 
 function substitute_text(dictionary) {
-    console.log(dictionary);
     var nodes = getTextNodesIn('html')
     $.each(nodes, function(nid, node) {
         var text = node.textContent
