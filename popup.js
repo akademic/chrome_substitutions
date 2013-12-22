@@ -68,7 +68,9 @@ $(function() {
     function render_table() {
         $('#words').empty()
         var table = $('<table/>');
-        var header = $('<tr><th></th><th>Строка</th><th>На что меняем</th><th></th><th></th></tr>')
+        var from_title = chrome.i18n.getMessage('table_title_from')
+        var to_title = chrome.i18n.getMessage('table_title_to')
+        var header = $('<tr><th></th><th>'+from_title+'</th><th>'+to_title+'</th><th></th><th></th></tr>')
         var new_word = $('<tr data-index="new"><td></td><td><input name="f"></td><td><input name="t"></td><td></td><td></td></tr>');
         header.appendTo(table)
         new_word.appendTo(table)
@@ -82,13 +84,16 @@ $(function() {
 
     function update_status() {
         if( is_enable ) {
-            $('#status').text('работает')
+            $('#status').text(chrome.i18n.getMessage('status_enabled'))
             $('#status').css('color', 'green')
         }
         else {
-            $('#status').text('не работает')
+            $('#status').text(chrome.i18n.getMessage('status_disabled'))
             $('#status').css('color', 'red')
         }
+
+        $('#save').text(chrome.i18n.getMessage('save_button'))
+        $('#status_description').text(chrome.i18n.getMessage('status_description'))
     }
 
     render_table()
