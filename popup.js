@@ -1,5 +1,6 @@
 $(function() {
     var dict = JSON.parse(localStorage['dictionary'])
+    var is_enable = parseInt(localStorage['is_enable'], 10)
     $('#save').click(function() {
         var rows = $('#words tr[data-index]')
         var collect_dict = []
@@ -32,7 +33,7 @@ $(function() {
         tr.after(tmp)
         prev_tr.remove()
         $('#save').click()
-    });
+    })
 
     $(document).on('click', '.down', function() {
         var el = $(this)
@@ -42,24 +43,55 @@ $(function() {
         tr.before(tmp)
         next_tr.remove()
         $('#save').click()
-    });
+    })
 
+    $(document).on('click', '.del', function() {
+        var el = $(this)
+        var tr = el.closest('tr')
+        tr.remove()
+        $('#save').click()
+    })
+
+    $('#status').click(function() {
+        if( is_enable ) {
+            localStorage['is_enable'] = 0
+            is_enable = 0
+        }
+        else {
+            localStorage['is_enable'] = 1
+            is_enable = 1
+        }
+
+        update_status()
+    });
 
     function render_table() {
         $('#words').empty()
         var table = $('<table/>');
-        var header = $('<tr><th>Строка</th><th>На что меняем</th><th></th><th></th></tr>')
-        var new_word = $('<tr data-index="new"><td><input name="f"></td><td><input name="t"></td><td></td><td></td></tr>');
+        var header = $('<tr><th></th><th>Строка</th><th>На что меняем</th><th></th><th></th></tr>')
+        var new_word = $('<tr data-index="new"><td></td><td><input name="f"></td><td><input name="t"></td><td></td><td></td></tr>');
         header.appendTo(table)
         new_word.appendTo(table)
 
         $.each(dict, function(index, item) {
-            $('<tr data-index="'+index+'"><td><input name="f" value="'+item['f']+'"></td><td><input name="t" value="'+item['t']+'"></td><td class="up">up</td><td class="down">down</td></tr>').appendTo(table);
+            $('<tr data-index="'+index+'"><td class="del"></td><td><input name="f" value="'+item['f']+'"></td><td><input name="t" value="'+item['t']+'"></td><td class="up"></td><td class="down"></td></tr>').appendTo(table);
         });
 
         table.appendTo('#words')
     }
 
+    function update_status() {
+        if( is_enable ) {
+            $('#status').text('работает')
+            $('#status').css('color', 'green')
+        }
+        else {
+            $('#status').text('не работает')
+            $('#status').css('color', 'red')
+        }
+    }
+
     render_table()
+    update_status()
 
 });
