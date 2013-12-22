@@ -1,0 +1,30 @@
+{
+    "description": {
+        "message": "Заменяет слова и фразы на веб-странице",
+        "description": "Текст в на кнопку и в описание расширения"
+    },
+    "save_button": {
+        "message": "Сохранить",
+        "description": "Кнопка сохранения списка замен"
+    },
+    "status_description": {
+        "message": "Состояние: ",
+        "description": "Подсказка для статуса"
+    },
+    "status_enabled": {
+        "message": "Работает",
+        "description": "Сообщение для работающего расширения"
+    },
+    "status_disabled": {
+        "message": "Не работает",
+        "description": "Сообщение для остановленного расширения"
+    },
+    "table_title_from": {
+        "message": "Что меняем",
+        "description": "Заголовок поля в таблице"
+    },
+    "table_title_to": {
+        "message": "На что заменяем",
+        "description": "Заголовок поля в таблице"
+    }
+}

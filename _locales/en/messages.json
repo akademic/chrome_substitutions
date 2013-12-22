@@ -1,0 +1,30 @@
+{
+    "description": {
+        "message": "Substitute words and phrases on webpage",
+        "description": "Popup title and extension description"
+    },
+    "save_button": {
+        "message": "Save",
+        "description": "Save button in Popup"
+    },
+    "status_description": {
+        "message": "Status: ",
+        "description": "Status title"
+    },
+    "status_enabled": {
+        "message": "Working",
+        "description": "Working status"
+    },
+    "status_disabled": {
+        "message": "Stopped",
+        "description": "Stopped status"
+    },
+    "table_title_from": {
+        "message": "Search",
+        "description": "Data table from header"
+    },
+    "table_title_to": {
+        "message": "Replace",
+        "description": "Data table to header"
+    }
+}
