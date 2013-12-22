@@ -16,11 +16,21 @@ var dictionary = [
 ]
 
 if( localStorage['dictionary'] == undefined ) {
-    localStorage['dictionary'] = JSON.stringify(dictionary);
+    localStorage['dictionary'] = JSON.stringify(dictionary)
+}
+
+if( localStorage['is_enable'] == undefined ) {
+    localStorage['is_enable'] = 1
 }
 
 chrome.runtime.onMessage.addListener(function(mess, sender, send_resp) {
     if(mess.action == 'get_dict') {
-        send_resp(localStorage['dictionary'])
+        var is_enable = parseInt(localStorage['is_enable'], 10)
+        if( is_enable ) {
+            send_resp(localStorage['dictionary'])
+        }
+        else {
+            send_resp(JSON.stringify([]))
+        }
     }
 })
