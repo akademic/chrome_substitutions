@@ -33,7 +33,9 @@ function subst_item(item, to, mod) {
 function _init() {
     chrome.runtime.sendMessage({action: "get_dict"}, function(response) {
         var dict = JSON.parse(response)
-        substitute_text(dict)
+        if(dict.length) {
+            substitute_text(dict)
+        }
     });
 }
 
